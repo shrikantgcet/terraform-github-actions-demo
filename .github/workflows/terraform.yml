@@ -30,10 +30,10 @@ jobs:
     - id: apply
       name: Terraform Apply
       env:
-        ARM_SUBSCRIPTION_ID: ${{ vars.ARM_SUBSCRIPTION_ID }}
-        ARM_TENANT_ID: ${{ vars.ARM_TENANT_ID }}
-        ARM_CLIENT_ID: ${{ vars.ARM_CLIENT_ID }}
-        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+        ARM_SUBSCRIPTION_ID: "3cbe84f6-78b3-4b7a-97e4-e47fcf9e3d6b"
+        ARM_TENANT_ID: "1b8b93e0-fc23-441e-ab35-a908300672d3"
+        ARM_CLIENT_ID: "cbabbc53-6623-4413-aa95-c1d456d1929e"
+        ARM_CLIENT_SECRET: "1zm8Q~WyZheMy0EPB9u0u1yYfF_PX0Dcs1SDNau_"
         BACKEND_RESOURCE_GROUP_NAME: ${{ vars.BACKEND_RESOURCE_GROUP_NAME }}
         BACKEND_STORAGE_ACCOUNT_NAME: ${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}
         BACKEND_STORAGE_CONTAINER_NAME: ${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}
