@@ -59,7 +59,7 @@ jobs:
         echo "function_name=$function_name" >> "$GITHUB_OUTPUT"
 
   deploy:
-    needs: [terraform, build]
+    needs: [terraform]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
