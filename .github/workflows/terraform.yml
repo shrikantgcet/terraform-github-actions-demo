@@ -66,7 +66,7 @@ jobs:
     steps:
     - id: apply
       name: Terraform apply
-      run: terraform apply
+      run: terraform apply -auto-approve
    
         echo $resource_group_name
         resource_group_name=$(terraform output -raw resource_group_name)
