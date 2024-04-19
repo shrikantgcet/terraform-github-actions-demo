@@ -72,6 +72,7 @@ jobs:
 
 
   Terraform-Deploy-Pipeline:
+    needs: [Terraform-Build-Pipeline]
     runs-on: ubuntu-latest
     outputs:
       resource_group_name: ${{ steps.apply.outputs.resource_group_name }}
