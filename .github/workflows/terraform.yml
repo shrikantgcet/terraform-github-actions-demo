@@ -70,6 +70,10 @@ jobs:
     - uses: actions/checkout@v3
     - id: apply
       name: Terraform apply
+      env:
+        TF_VAR_application_name: ${{ env.APPLICATION_NAME }}
+        TF_VAR_environment_name: ${{ env.ENVIRONMENT_NAME }}
+        TF_BACKEND_KEY: ${{ env.APPLICATION_NAME }}-${{ env.ENVIRONMENT_NAME }}
       working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
       run: |
         terraform init \
