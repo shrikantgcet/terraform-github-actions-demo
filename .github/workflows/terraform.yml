@@ -60,6 +60,12 @@ jobs:
         resource_group_name=$(terraform output -raw resource_group_name)
         echo 'Terraform Plan completed successfully'
 
+  Terraform-Deploy-Pipeline:
+    runs-on: ubuntu-latest
+    outputs:
+      resource_group_name: ${{ steps.apply.outputs.resource_group_name }}
+      function_name: ${{ steps.apply.outputs.function_name }}
+    steps:
     - id: apply
       name: Terraform apply
       working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
@@ -68,4 +74,4 @@ jobs:
 
         echo $resource_group_name
         resource_group_name=$(terraform output -raw resource_group_name)
-        echo 'Terraform Plan completed successfully'
+        echo 'Terraform apply completed successfully'
