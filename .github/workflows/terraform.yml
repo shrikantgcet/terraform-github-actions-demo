@@ -60,4 +60,12 @@ jobs:
         resource_group_name=$(terraform output -raw resource_group_name)
         echo 'Terraform Plan completed successfully'
 
+    - id: apply
+      name: Terraform apply
+      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
+      run: |
+        terraform plan
 
+        echo $resource_group_name
+        resource_group_name=$(terraform output -raw resource_group_name)
+        echo 'Terraform Plan completed successfully'
