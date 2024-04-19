@@ -24,7 +24,7 @@ jobs:
         BACKEND_RESOURCE_GROUP_NAME: ${{ vars.BACKEND_RESOURCE_GROUP_NAME }}
         BACKEND_STORAGE_ACCOUNT_NAME: ${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}
         BACKEND_STORAGE_CONTAINER_NAME: ${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}
-        working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
+        working-directory: "terraform"
         
     outputs:
       resource_group_name: ${{ steps.apply.outputs.resource_group_name }}
