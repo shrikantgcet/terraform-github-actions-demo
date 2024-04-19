@@ -71,7 +71,9 @@ jobs:
     - id: apply
       name: Terraform apply
       working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
-      run: |
+      run: | 
+        terraform init \
+        
         terraform apply --auto-approve
         
         echo 'Terraform Plan completed successfully'
