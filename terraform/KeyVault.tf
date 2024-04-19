@@ -1,7 +1,7 @@
 
 
-resource "azurerm_resource_group" "kv_rg" {
-  name     = var.kv_rg_name
+resource "azurerm_resource_group" "iac_rg" {
+  name     = var.iac_rg_name
   location = var.resources_location
 
   tags = merge(
@@ -17,8 +17,8 @@ resource "azurerm_resource_group" "kv_rg" {
 
 resource "azurerm_key_vault" "kv" {
   name                        = var.kv_name
-  location                    = azurerm_resource_group.kv_rg.location
-  resource_group_name         = azurerm_resource_group.kv_rg.name
+  location                    = azurerm_resource_group.iac_rg.location
+  resource_group_name         = azurerm_resource_group.iac_rg.name
   enabled_for_disk_encryption = true
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days  = var.kv_soft_delete_retention_days
