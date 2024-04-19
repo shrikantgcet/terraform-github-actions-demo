@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - main
+  
     paths:
       - 'terraform/**'
       - '.github/workflows/**'
-
+  workflow_dispatch: #this attribute will enable the manual run to the pipeline
+  
 env:
   TERRAFORM_WORKING_DIRECTORY: "terraform"
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
@@ -82,7 +84,8 @@ jobs:
           -backend-config="container_name=$BACKEND_STORAGE_CONTAINER_NAME" \
           -backend-config="key=$TF_BACKEND_KEY"
         
-        terraform destroy --auto-approve
+        terraform apply --auto-approve
+        # terraform destroy --auto-approve ---- this is required if we have to delete any resource
         
         echo 'Terraform Plan completed successfully'
 
