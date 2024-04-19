@@ -34,3 +34,15 @@ sto_container_access_type = "container"
   *****************************************************
 */
 
+
+
+/* Key Vault Details starts*/
+
+
+
+kv_rg_name                    = "RG-IAC-INTGR-NPROD-UK-01"
+kv_name                       = "intgrkv01"
+kv_sku                        = "premium"
+kv_soft_delete_retention_days = 90
+
+/* Key Vault Details ends*/

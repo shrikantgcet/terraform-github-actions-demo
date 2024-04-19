@@ -46,3 +46,28 @@ variable "sto_container_access_type" {
   *****************************************************
 */
 
+
+/*
+  **********************Key Vault Details*******************************
+*/
+
+variable "kv_rg_name" {
+  type = string
+}
+
+
+variable "kv_name" {
+  type = string
+}
+
+variable "kv_sku" {
+  type = string
+}
+
+variable "kv_soft_delete_retention_days" {
+  type = number
+}
+
+/*
+  **********************Ends*******************************
+*/

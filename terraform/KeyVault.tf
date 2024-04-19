@@ -1,0 +1,80 @@
+
+
+resource "azurerm_resource_group" "kv_rg" {
+  name     = var.kv_rg_name
+  location = var.resources_location
+
+  tags = merge(
+    var.tags,
+    {
+      "serviceType" = "RG-KEYV-INTGR-NPROD-UK-01",
+      "description" = "Integration Key Vault Resource Group"
+    }
+  )
+
+}
+
+
+resource "azurerm_key_vault" "kv" {
+  name                        = var.kv_name
+  location                    = azurerm_resource_group.kv_rg.location
+  resource_group_name         = azurerm_resource_group.kv_rg.name
+  enabled_for_disk_encryption = true
+  tenant_id                   = data.azurerm_client_config.current.tenant_id
+  soft_delete_retention_days  = var.kv_soft_delete_retention_days
+  purge_protection_enabled    = false
+
+  sku_name = var.kv_sku
+
+  tags = merge(
+    var.tags,
+    {
+      "serviceType" = "KEYV-INTGR-NPROD-AE-001",
+      "description" = "Integration Key Vault"
+    }
+  )
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = [
+      "Get",
+      "List",
+      "Update",
+      "Create",
+      "Import",
+      "Delete",
+      "Recover",
+      "Backup",
+      "Restore"
+    ]
+
+    secret_permissions = [
+      "Get",
+      "List",
+      "Set",
+      "Delete",
+      "Recover",
+      "Backup",
+      "Restore",
+      "purge"
+    ]
+
+    certificate_permissions = [
+      "create",
+      "delete",
+      "deleteissuers",
+      "get",
+      "getissuers",
+      "import",
+      "list",
+      "listissuers",
+      "managecontacts",
+      "manageissuers",
+      "setissuers",
+      "update",
+    ]
+
+  }
+}
