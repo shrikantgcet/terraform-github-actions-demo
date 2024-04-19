@@ -66,6 +66,7 @@ jobs:
     steps:
     - id: apply
       name: Terraform apply
+      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
       run: terraform apply -auto-approve
    
         echo $resource_group_name
