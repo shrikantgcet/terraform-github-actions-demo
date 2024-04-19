@@ -5,19 +5,11 @@ on:
     branches:
       - main
     paths:
-      - "terraform/**"
-      
-  pull_request:
-    branches:
-      - main
+      - 'terraform/**'
+      - '.github/workflows/**'
   workflow_dispatch: #this attribute will enable the manual run to the pipeline
-
-# Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-defaults:
-  run:
-    shell: bash
-  
 env:
+  TERRAFORM_WORKING_DIRECTORY: "terraform"
   ROOT_PATH: 'terraform'
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
@@ -26,8 +18,15 @@ env:
   BACKEND_RESOURCE_GROUP_NAME: ${{ vars.BACKEND_RESOURCE_GROUP_NAME }}
   BACKEND_STORAGE_ACCOUNT_NAME: ${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}
   BACKEND_STORAGE_CONTAINER_NAME: ${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}
-
   STAGE_NAME: production
+  
+
+# Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+defaults:
+  run:
+    shell: bash
+  
+  
 
 jobs:
 
@@ -49,12 +48,12 @@ jobs:
 
     - name: terraform init
       run: terraform init
-      working-directory: ${{ env.ROOT_PATH }}
+      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
         echo 'Terraform Init completed successfully'
 
     - name: terraform Plan
       run: terraform plan 
-      working-directory: ${{ env.ROOT_PATH }}
+      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
         echo 'Terraform Plan completed successfully'
 
   Terraform-Deploy-Pipeline:
@@ -63,7 +62,7 @@ jobs:
     steps:
     - id: apply
       name: Terraform apply
-      working-directory: ${{ env.ROOT_PATH }}
+      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
       run: terraform apply -auto-approve
    
         echo $resource_group_name
