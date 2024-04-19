@@ -18,7 +18,7 @@ Storage Account Details
 */
 
 sto_rg_name = "rg-demo"
-sto_name = "gentingdemo001001"
+sto_name = "gentingdemo001"
 sto_account_tier = "Standard"
 sto_account_replication_type = "LRS"
 
