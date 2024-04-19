@@ -48,7 +48,6 @@ jobs:
 
     - name: terraform init
       run: terraform init
-      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
         echo 'Terraform Init completed successfully'
 
     - name: terraform Plan
