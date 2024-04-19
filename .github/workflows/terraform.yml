@@ -26,7 +26,7 @@ jobs:
         BACKEND_STORAGE_CONTAINER_NAME: ${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}
         working-directory: "terraform"
         
-    outputs:
+    outputs:  
       resource_group_name: ${{ steps.apply.outputs.resource_group_name }}
       function_name: ${{ steps.apply.outputs.function_name }}
     steps:
@@ -40,7 +40,7 @@ jobs:
     - name: Terraform Init
       id: init
       run: 
-        terraform init -backend-config="resource_group_name=$BACKEND_RESOURCE_GROUP_NAME" -backend-config="storage_account_name=$BACKEND_STORAGE_ACCOUNT_NAME" -backend-config="container_name=$BACKEND_STORAGE_CONTAINER_NAME"
+        terraform init -backend-config="resource_group_name=$BACKEND_RESOURCE_GROUP_NAME" -backend-config="storage_account_name=$BACKEND_STORAGE_ACCOUNT_NAME" -backend-config="container_name=$BACKEND_STORAGE_CONTAINER_NAME" working-directory: "terraform"
     
     - id: plan
       name: Terraform Plan
