@@ -1,4 +1,4 @@
-name: cd
+name: Terraform-Azure
 
 on:
   push:
@@ -7,9 +7,19 @@ on:
     paths:
       - 'terraform/**'
       - '.github/workflows/**'
+      
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: #this attribute will enable the manual run to the pipeline
 
+# Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+defaults:
+  run:
+    shell: bash
+  
 env:
-  TERRAFORM_WORKING_DIRECTORY: "terraform"
+  ROOT_PATH: '${{github.workspace}}/terraform'
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -17,17 +27,20 @@ env:
   BACKEND_RESOURCE_GROUP_NAME: ${{ vars.BACKEND_RESOURCE_GROUP_NAME }}
   BACKEND_STORAGE_ACCOUNT_NAME: ${{ vars.BACKEND_STORAGE_ACCOUNT_NAME }}
   BACKEND_STORAGE_CONTAINER_NAME: ${{ vars.BACKEND_STORAGE_CONTAINER_NAME }}
-  
+
+  STAGE_NAME: production
 
 jobs:
 
   Terraform-Build-Pipeline:
+    name: 'terraform plan'
     runs-on: ubuntu-latest
     outputs:
       resource_group_name: ${{ steps.apply.outputs.resource_group_name }}
       function_name: ${{ steps.apply.outputs.function_name }}
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v2
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
@@ -41,7 +54,7 @@ jobs:
         TF_VAR_application_name: ${{ env.APPLICATION_NAME }}
         TF_VAR_environment_name: ${{ env.ENVIRONMENT_NAME }}
         TF_BACKEND_KEY: ${{ env.APPLICATION_NAME }}-${{ env.ENVIRONMENT_NAME }}
-      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
+      working-directory: ${{ env.ROOT_PATH }}
       run: |
         terraform init \
           -backend-config="resource_group_name=$BACKEND_RESOURCE_GROUP_NAME" \
@@ -52,7 +65,7 @@ jobs:
         echo 'Terraform Init completed successfully'
     - id: plan
       name: Terraform Plan
-      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
+      working-directory: ${{ env.ROOT_PATH }}
       run: |
         terraform plan
 
@@ -66,7 +79,7 @@ jobs:
     steps:
     - id: apply
       name: Terraform apply
-      working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
+      working-directory: ${{ env.ROOT_PATH }}
       run: terraform apply -auto-approve
    
         echo $resource_group_name
