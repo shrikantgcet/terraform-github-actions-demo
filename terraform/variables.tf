@@ -18,9 +18,6 @@ variable "env" {
 /* 
   Storage Account Details
 */
-variable "sto_rg_name" {
-  type = string
-}
 
 variable "sto_name" {
   type = string
