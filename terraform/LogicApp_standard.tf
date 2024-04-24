@@ -1,6 +1,6 @@
 
 resource "azurerm_storage_account" "la_storage_account" {
-  name                      = la_storage_name
+  name                      = var.la_storage_name
   location                  = azurerm_resource_group.iac_rg.location
   resource_group_name       = azurerm_resource_group.iac_rg.name
   account_tier              = var.la_account_tier
