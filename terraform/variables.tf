@@ -120,7 +120,7 @@ variable "ai_name" {
 }
 
 
-variable "la_name" {
+variable "law_name" {
   type = string
 }
 
