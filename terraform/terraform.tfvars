@@ -50,4 +50,4 @@ ai_name                       = "appi-ais-uksouth-dev-001 "
 /* Application insights Details ends*/
 
 
-la_name = "Log-ais-uksouth-dev-001"
+law_name = "Log-ais-uksouth-dev-001"
