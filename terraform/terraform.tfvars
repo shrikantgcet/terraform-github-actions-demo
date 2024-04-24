@@ -10,7 +10,7 @@ env   =   "dev"
 
 /*Storage Account Details*/
 
-sto_name = "staisuksouthdev"
+sto_name = "staisuksouthdev001"
 sto_account_tier = "Standard"
 sto_account_replication_type = "LRS"
 
