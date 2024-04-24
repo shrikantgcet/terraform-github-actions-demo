@@ -2,17 +2,19 @@
 
 
 resource "azurerm_resource_group" "sa_rg" {
-  name     = var.sto_rg_name
+  name     = var.iac_rg_name
   location = var.resources_location
 
   
   tags = merge(
-    var.tags ,
+    var.tags,
     {
-      "deployedDate" = timestamp(),
-      "reviewedDate" = timestamp()
+      "Criticality" = "low",
+      "Environment" = var.env,
+      "Application"="AIS",
+      "Owner":"IT"
     }
-    )
+  )
 }
 resource "azurerm_storage_account" "sto" {
   name                     = var.sto_name
@@ -22,12 +24,14 @@ resource "azurerm_storage_account" "sto" {
   account_replication_type = var.sto_account_replication_type
   
   tags = merge(
-    var.tags ,
+    var.tags,
     {
-      "deployedDate" = timestamp(),
-      "reviewedDate" = timestamp()
+      "Criticality" = "low",
+      "Environment" = var.env,
+      "Application"="AIS",
+      "Owner":"IT"
     }
-    )
+  )
 }
 
 resource "azurerm_storage_container" "toscan_container" {

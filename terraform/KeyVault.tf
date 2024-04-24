@@ -7,8 +7,10 @@ resource "azurerm_resource_group" "iac_rg" {
   tags = merge(
     var.tags,
     {
-      "serviceType" = "RG-KEYV-INTGR-NPROD-UK-01",
-      "description" = "Integration Key Vault Resource Group"
+      "Criticality" = "low",
+      "Environment" = var.env,
+      "Application"="AIS",
+      "Owner":"IT"
     }
   )
 
@@ -29,8 +31,10 @@ resource "azurerm_key_vault" "kv" {
   tags = merge(
     var.tags,
     {
-      "serviceType" = "KEYV-INTGR-NPROD-AE-001",
-      "description" = "Integration Key Vault"
+      "Criticality" = "low",
+      "Environment" = var.env,
+      "Application"="AIS",
+      "Owner":"IT"
     }
   )
 

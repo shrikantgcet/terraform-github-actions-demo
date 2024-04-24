@@ -11,7 +11,9 @@ variable "resources_location" {
   type = string
 }
 
-
+variable "env" {
+  type = string
+}
 
 /* 
   Storage Account Details
@@ -85,10 +87,33 @@ variable "sb_name" {
 variable "sb_sku" {
   type = string
 }
-
-
-
-
 /*
   **********************Ends*******************************
 */
+
+
+/*********************logic app bus Details********************************/
+
+variable "la_name" {
+  type = string
+}
+
+variable "la_sku_tier" {
+  type = string
+}
+variable "la_account_tier" {
+  type = string
+}
+variable "la_size" {
+  type = string
+}
+variable "la_app_service_plan" {
+  type = string
+}
+variable "la_storage_name" {
+  type = string
+}
+
+
+
+/*********************logic app bus Details********************************/

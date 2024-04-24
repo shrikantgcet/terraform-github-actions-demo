@@ -5,11 +5,13 @@ resource "azurerm_servicebus_namespace" "service_bus" {
   resource_group_name = azurerm_resource_group.iac_rg.name
   sku                 = var.sb_sku
 
-   tags = merge(
+  tags = merge(
     var.tags,
     {
-      "serviceType" = "genting-sb-np-01",
-      "description" = "Integration Service Bus"
+      "Criticality" = "low",
+      "Environment" = var.env,
+      "Application"="AIS",
+      "Owner":"IT"
     }
   )
 }
