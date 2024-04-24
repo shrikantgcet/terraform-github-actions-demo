@@ -114,3 +114,13 @@ variable "la_storage_name" {
 
 
 /*********************logic app bus Details********************************/
+
+variable "ai_name" {
+  type = string
+}
+
+
+variable "la_name" {
+  type = string
+}
+

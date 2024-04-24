@@ -43,3 +43,11 @@ la_size                       = "WS1"
 la_app_service_plan           = "logic-ais-uksouth-dev-plan-001"
 la_storage_name               = "staisuksouthdev002"
 /* Logic app Details ends*/
+
+
+/* Application insights Details starts*/
+ai_name                       = "appi-ais-uksouth-dev-001 "
+/* Application insights Details ends*/
+
+
+la_name = "Log-ais-uksouth-dev-001"
