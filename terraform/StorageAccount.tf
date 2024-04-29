@@ -23,6 +23,11 @@ resource "azurerm_storage_account" "sto" {
   account_tier             = var.sto_account_tier
   account_replication_type = var.sto_account_replication_type
 
+  blob_properties {
+    delete_retention_policy {
+      days = 7
+    }
+  }
   
   tags = merge(
     var.tags,
@@ -34,3 +39,10 @@ resource "azurerm_storage_account" "sto" {
     }
   )
 }
+
+resource "azurerm_storage_container" "toscan_container" {
+  name                  = var.sto_container_name
+  storage_account_name  = azurerm_storage_account.sto.name
+  container_access_type = var.sto_container_access_type
+}
+
