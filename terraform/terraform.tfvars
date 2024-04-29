@@ -46,8 +46,8 @@ la_storage_name               = "staisuksouthdev002"
 
 
 /* Application insights Details starts*/
-ai_name                       = "appi-ais-uksouth-dev-001 "
+ai_name                       = "appi-ais-uksouth-dev-001"
 /* Application insights Details ends*/
 
 
-law_name = "Log-ais-uksouth-dev-001"
+law_name = "log-ais-uksouth-dev-001"
