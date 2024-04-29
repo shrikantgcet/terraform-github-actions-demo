@@ -23,8 +23,8 @@ resource "azurerm_storage_account" "sto" {
   account_tier             = var.sto_account_tier
   account_replication_type = var.sto_account_replication_type
 allow_nested_items_to_be_public = false
-  
 infrastructure_encryption_enabled = true
+
   tags = merge(
     var.tags,
     {

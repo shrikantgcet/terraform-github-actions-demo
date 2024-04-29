@@ -32,15 +32,7 @@ variable "sto_account_replication_type" {
 }
 
 
-// container 
 
-variable "sto_container_name" {
-  type = string
-}
-
-variable "sto_container_access_type" {
-  type = string
-}
 /* 
   *****************************************************
 */
