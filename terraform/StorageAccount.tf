@@ -22,8 +22,7 @@ resource "azurerm_storage_account" "sto" {
   resource_group_name      = azurerm_resource_group.sa_rg.name
   account_tier             = var.sto_account_tier
   account_replication_type = var.sto_account_replication_type
-  infrastructure_encryption_enabled = true
-  
+
   blob_properties {
     delete_retention_policy {
       days = 7
