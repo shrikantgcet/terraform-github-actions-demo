@@ -25,7 +25,7 @@ resource "azurerm_key_vault" "kv" {
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days  = var.kv_soft_delete_retention_days
   purge_protection_enabled    = false
-
+  enabled_for_template_deployment = true
   sku_name = var.kv_sku
 
   tags = merge(
