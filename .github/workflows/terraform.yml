@@ -55,7 +55,7 @@ jobs:
       name: Terraform Plan
       working-directory: ${{ env.TERRAFORM_WORKING_DIRECTORY }}
       run: |
-        terraform plan
+        terraform untaint
         echo $resource_group_name
         resource_group_name=$(terraform output -raw resource_group_name)
         echo 'Terraform Plan completed successfully'
