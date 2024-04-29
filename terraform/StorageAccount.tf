@@ -35,10 +35,3 @@ infrastructure_encryption_enabled = true
     }
   )
 }
-
-resource "azurerm_storage_container" "toscan_container" {
-  name                  = var.sto_container_name
-  storage_account_name  = azurerm_storage_account.sto.name
-  container_access_type = var.sto_container_access_type
-}
-
