@@ -17,7 +17,7 @@ sto_account_replication_type = "LRS"
 
 sto_container_name = "test"
 
-sto_container_access_type = "container"
+sto_container_access_type = "private"
 /*Storage Account Details*/
 
 iac_rg_name                   = "rg-ais-uksouth-test-001"

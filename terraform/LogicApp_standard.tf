@@ -1,4 +1,3 @@
-
 resource "azurerm_storage_account" "la_storage_account" {
   name                      = var.la_storage_name
   location                  = azurerm_resource_group.iac_rg.location
@@ -41,6 +40,11 @@ resource "azurerm_logic_app_standard" "logic_app" {
   app_settings = {
     "FUNCTIONS_WORKER_RUNTIME"     = "node"
     "WEBSITE_NODE_DEFAULT_VERSION" = "~18"
+    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.ai.instrumentation_key
+  }
+
+  identity= {
+      type= SystemAssigned
   }
 
     tags = merge(
