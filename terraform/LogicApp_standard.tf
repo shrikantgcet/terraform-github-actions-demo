@@ -46,7 +46,7 @@ resource "azurerm_logic_app_standard" "logic_app" {
   }
 
  identity  {
-        type                        = "SystemAssigned"
+        type = "SystemAssigned"
     }
 
     tags = merge(
