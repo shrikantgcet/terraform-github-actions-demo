@@ -43,9 +43,9 @@ resource "azurerm_logic_app_standard" "logic_app" {
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.ai.instrumentation_key
   }
 
-  identity= {
-      type= SystemAssigned
-  }
+ identity  {
+        type                        = "SystemAssigned"
+    }
 
     tags = merge(
     var.tags,
