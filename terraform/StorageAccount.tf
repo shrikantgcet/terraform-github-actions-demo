@@ -22,7 +22,7 @@ resource "azurerm_storage_account" "sto" {
   resource_group_name      = azurerm_resource_group.sa_rg.name
   account_tier             = var.sto_account_tier
   account_replication_type = var.sto_account_replication_type
-
+allow_nested_items_to_be_public = false
   
   tags = merge(
     var.tags,
