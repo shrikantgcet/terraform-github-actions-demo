@@ -4,6 +4,8 @@ resource "azurerm_storage_account" "la_storage_account" {
   resource_group_name       = azurerm_resource_group.iac_rg.name
   account_tier              = var.la_account_tier
   account_replication_type  = "LRS"
+  allow_nested_items_to_be_public = false
+  infrastructure_encryption_enabled = true
 
     tags = merge(
     var.tags,
