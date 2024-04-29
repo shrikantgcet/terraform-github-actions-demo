@@ -25,11 +25,8 @@ resource "azurerm_storage_account" "sto" {
   infrastructure_encryption_enabled = true
   public_network_access_enabled   = false
   allow_nested_items_to_be_public = false
-  blob_properties {
-    delete_retention_policy {
-      days = 7
-    }
-  }
+
+
   
   tags = merge(
     var.tags,
